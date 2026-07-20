@@ -1,9 +1,71 @@
 <!doctype html>
 <html>
   <head>
-    <!-- Timer page - powered by TimerMo.com -->
-    <meta http-equiv="refresh" content="0;url=https://www.timermo.com" />
-    <title>Timer</title>
+    <meta charset="UTF-8" />
+    <title>간단한 타이머</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        margin-top: 100px;
+      }
+      #display {
+        font-size: 60px;
+        margin-bottom: 20px;
+      }
+      button {
+        font-size: 20px;
+        padding: 10px 20px;
+        margin: 5px;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <h1>타이머</h1>
+    <h2>광명폴리텍</h2>
+    <div>폴리텍시계</div>
+
+    <div id="display">10</div>
+
+    <input type="number" id="seconds" value="10" />
+    <br /><br />
+
+    <button onclick="start()">시작</button>
+    <button onclick="stop()">정지</button>
+    <button onclick="reset()">초기화</button>
+
+    <script>
+      let timeLeft = 10;
+      let timerId = null;
+
+      function updateDisplay() {
+        document.getElementById("display").textContent = timeLeft;
+      }
+
+      function start() {
+        if (timerId !== null) return;
+
+        timerId = setInterval(function () {
+          timeLeft--;
+          updateDisplay();
+
+          if (timeLeft <= 0) {
+            stop();
+            alert("시간 종료!");
+          }
+        }, 1000);
+      }
+
+      function stop() {
+        clearInterval(timerId);
+        timerId = null;
+      }
+
+      function reset() {
+        stop();
+        timeLeft = Number(document.getElementById("seconds").value);
+        updateDisplay();
+      }
+    </script>
+  </body>
 </html>
