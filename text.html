@@ -15,6 +15,16 @@
         width: 200px;
         height: 200px;
       }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 8px;
+      }
     </style>
   </head>
   <body>
@@ -32,5 +42,55 @@
       <img src="dog.jpg" alt="이미지2" />
     </p>
     <!-- 나란히 배치되면서도 width/height가 먹힘 → 인라인블록 -->
+
+    <table>
+      <caption>
+        월요일 수업 시간표
+      </caption>
+      <tr>
+        <th>교시</th>
+        <th>과목</th>
+        <th>강의실</th>
+      </tr>
+      <tr>
+        <td>1교시</td>
+        <td rowspan="2">HTML 기초</td>
+        <!-- 2행 병합 -->
+        <td>301호</td>
+      </tr>
+      <tr>
+        <td>2교시</td>
+        <!-- rowspan으로 병합됐으므로 이 행에는 과목 셀이 없음 -->
+        <td>301호</td>
+      </tr>
+      <tr>
+        <td>3교시</td>
+        <td colspan="2">점심 시간</td>
+        <!-- 2열 병합 -->
+      </tr>
+    </table>
+    <br />
+
+    <table>
+      <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+        <th>Header 3</th>
+      </tr>
+      <tr>
+        <td>Data 1</td>
+        <td rowspan="2">Data 2</td>
+        <td>Data 3</td>
+      </tr>
+      <tr>
+        <td>Data 4</td>
+
+        <td>Data 6</td>
+      </tr>
+      <tr>
+        <td>Data 7</td>
+        <td colspan="2">Data 8</td>
+      </tr>
+    </table>
   </body>
 </html>
