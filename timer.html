@@ -19,18 +19,86 @@
         padding: 10px 20px;
         margin: 5px;
       }
+
+      /* class 선택자: .클래스명 - 여러 태그에 재사용 가능 */
+      .blue-text {
+        color: blue;
+      }
+
+      /* id 선택자: #아이디명 - 딱 하나의 요소에만 사용 */
+      #mainTitle {
+        color: red;
+        text-decoration: underline;
+      }
     </style>
+
   </head>
   <body>
-    <h1>타이머</h1>
+    <a href="#article1">철산두루치기</a><br />
+    <a href="#article2">철산삼계탕 </a>
+    <h1 id="mainTitle">타이머</h1>
     <h2>광명폴리텍</h2>
     <div>폴리텍시계</div>
-    <h1 title="마우스를 올리면 이 글이 보입니다">저는 요소입니다</h1>
+    <h1 class="blue-text" title="마우스를 올리면 이 글이 보입니다">저는 요소입니다</h1>
     <img src="kopo.jpg" alt="이미지를 못 찾으면 이 글이 보입니다" />
     <br />
     <input type="checkbox" />
      <p>HTML은 요소 안에 <strong>다른 요소</strong>가 들어갈 수 있습니다</p>
      <p>HTML은 요소 안에 <strong>다른 요소가 들어갈 수 있습니다</p></strong>
+
+     <nav id="nav">
+      <ul>
+        <li><a href="">Menu1</a></li>
+        <li><a href="">Menu2</a></li>
+        <li><a href="">Menu3</a></li>
+        <li><a href="">Menu4</a></li>
+        <li><a href="">Menu5</a></li>
+      </ul>
+     </nav>
+     <div class="card-wrap">
+      <div class="card">
+        <img src="" alt="">
+        <h3>제목</h3>
+        <p>내용</p>
+      </div>
+      <div class="card">
+        <img src="" alt="">
+        <h3>제목</h3>
+        <p>내용</p>
+      </div>
+      <div class="card">
+        <img src="" alt="">
+        <h3>제목</h3>
+        <p>내용</p>
+      </div>
+     </div>
+     <div id="div-id" class="div-class">
+      <ol id="ol-id">
+        <li id="li-list1">게시글-1</li>
+        <li id="li-list1">게시글-2</li>
+        <li id="li-list1">게시글-3</li>
+        <li id="li-list1">게시글-4</li>
+        <li id="li-list1">게시글-5</li>
+        <li id="li-list1">게시글-6</li>
+        <li id="li-list1">게시글-7</li>
+        <li id="li-list1">게시글-8</li>
+        <li id="li-list1">게시글-9</li>
+        <li id="li-list1">게시글-10</li>
+      </ol>
+     </div>
+
+        <h1>매일 가는 사이트</h1>
+   <a href="https://www.google.com" target="_blank">구글</a><br>
+   <a href="https://www.naver.com" target="_blank">네이버</a><br>
+   <a href="https://developer.mozilla.org" target="_blank">MDN 문서</a><br>
+
+   <h1>연락하기</h1>
+
+   <div id="article1">1. 철산 두루치기</div>
+   <a href="mailto:eq1392jn@gmail.com">선생님께 메일 보내기</a><br>
+   <a href="tel:010-4851-9621">전화 걸기 (모바일에서 테스트)</a><br>
+
+  <a href="#">맨 위로</a>
 
     <div id="display">10</div>
 
@@ -40,6 +108,11 @@
     <button onclick="start()">시작</button>
     <button onclick="stop()">정지</button>
     <button onclick="reset()">초기화</button>
+
+    <div>광명 맛집</div>
+
+    <div id="article2">2. 철산 삼계탕</div>
+    
 
     <script>
       let timeLeft = 10;
