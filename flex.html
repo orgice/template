@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <style>
+      .wrap {
+        background: gainsboro;
+        width: 700px;
+        height: 500px;
+        box-sizing: border-box;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .wrap > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .wrap > .right-side {
+        flex-direction: column-reverse;
+      }
+      .wrap > div > div {
+        color: white;
+        line-height: 100px;
+        text-align: center;
+        font-size: 40px;
+        width: 100px;
+        height: 100px;
+      }
+      .blue {
+        background: #4967d8;
+      }
+      .pink {
+        background-color: #ea8676;
+      }
+      .yellow {
+        background-color: #fad84a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="left-side">
+        <div class="blue">A</div>
+        <div class="pink">B</div>
+        <div class="yellow">C</div>
+      </div>
+      <div class="center">
+        <div class="blue">D</div>
+        <div class="yellow">E</div>
+      </div>
+      <div class="right-side">
+        <div class="blue">F</div>
+        <div class="pink">G</div>
+        <div class="yellow">H</div>
+      </div>
+    </div>
+  </body>
+</html>

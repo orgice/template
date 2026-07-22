@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Diphylleia&family=Gasoek+One&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tiny5&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
     <style>
       /* a 태그에 마우스 올렸을 때 */
@@ -40,6 +46,61 @@
         text-align: center;
         background-color: lightblue;
       }
+
+      /* padding / border / margin 비교 예제 */
+      /* box-wrap의 노란색 배경이 곧 margin(투명 여백)이 차지하는 공간이에요 */
+      .box-wrap {
+        display: inline-block;
+        background-color: yellow;
+      }
+
+      .box {
+        margin: 20px; /* 바깥 여백: box-wrap의 노란색이 보이는 만큼 */
+        border: 5px solid black; /* 테두리선 */
+        padding: 20px; /* 안쪽 여백: 글자와 검은 테두리 사이 하늘색 영역 */
+        background-color: skyblue;
+      }
+
+      /* position: relative(부모) + absolute(자식) 예제 */
+      .parent {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        background: #eee;
+      }
+      .child {
+        position: absolute;
+        top: 20px;
+        left: 20px; /* parent 기준 우상단 */
+        width: 80px;
+        height: 80px;
+        background: tomato;
+      }
+
+      /* z-index 예제: 이미지 위에 텍스트 얹기 */
+      .photo-card {
+        position: relative;
+        width: 300px;
+      }
+      .photo-card img {
+        width: 100%;
+        display: block;
+      }
+      .photo-card .caption {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: white;
+        z-index: 10;
+      }
+      .gasoek-one-regular,
+      p,
+      ul,
+      a {
+        font-family: "Gasoek One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
     </style>
   </head>
   <body>
@@ -49,7 +110,7 @@
       <li>리스트2</li>
       <li>리스트3</li>
     </ul>
-    <p>
+    <p class="gasoek-one-regular">
       안녕하세요. 저는 HTML입니다. HTML은 Hyper Text Markup Language의
       약자입니다.
     </p>
@@ -63,12 +124,31 @@
     </p>
 
     <div class="card-list">
-      <div class="card">카드1</div>
-      <div class="card">카드2</div>
-      <div class="card">카드3</div>
-      <div class="card">카드4</div>
-      <div class="card">카드5</div>
-      <div class="card">카드6</div>
+      <div class="card gasoek-one-regular">카드1</div>
+      <div class="card gasoek-one-regular">카드2</div>
+      <div class="card gasoek-one-regular">카드3</div>
+      <div class="card gasoek-one-regular">카드4</div>
+      <div class="card gasoek-one-regular">카드5</div>
+      <div class="card gasoek-one-regular">카드6</div>
+    </div>
+
+    <!-- padding / border / margin 비교 예제 -->
+    <div class="box-wrap">
+      <div class="box">content</div>
+    </div>
+    <div class="box-wrap">
+      <div class="box">content</div>
+    </div>
+
+    <!-- position: relative(부모) + absolute(자식) 예제 -->
+    <div class="parent">
+      <div class="child"></div>
+    </div>
+
+    <!-- z-index 예제: 이미지 위에 텍스트 얹기 -->
+    <div class="photo-card">
+      <img src="https://picsum.photos/300/200" alt="새 사진" />
+      <p class="caption">"Faith is the bird..." - Tagore</p>
     </div>
   </body>
 </html>
