@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KBO 야구 순위</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        text-align: center;
+      }
+      th {
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>KBO 야구 순위</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>순위</th>
+          <th>팀명</th>
+          <th>경기</th>
+          <th>승</th>
+          <th>무</th>
+          <th>패</th>
+          <th>승률</th>
+          <th>게임차</th>
+          <th>연속</th>
+        </tr>
+      </thead>
+      <tbody id="rankBody"></tbody>
+    </table>
+
+    <script>
+      fetch("baseball_ranking.json")
+        .then(function (pob) {
+          return pob.json();
+        })
+        .then(function (data) {
+          let rows = "";
+          for (const team of data.list) {
+            rows += `
+              <tr>
+                <td>${team.rank.rank}</td>
+                <td>${team.nameKo}</td>
+                <td>${team.rank.game}</td>
+                <td>${team.rank.win}</td>
+                <td>${team.rank.draw}</td>
+                <td>${team.rank.loss}</td>
+                <td>${team.rank.wpct}</td>
+                <td>${team.rank.gb}</td>
+                <td>${team.rank.streak}</td>
+              </tr>
+            `;
+          }
+          document.getElementById("rankBody").innerHTML = rows;
+        })
+        .catch(function (error) {
+          console.error("순위 데이터를 가져오는 데 실패했습니다.", error);
+        });
+    </script>
+  </body>
+</html>
+
+[ { "nameKo": "삼성 라이온즈", "rank": { "rank": 1, "win": 54, "draw": 2,
+"loss": 34, "wpct": 0.614, "gb": "0.0", "streak": "1패" } }, { "nameKo": "kt
+wiz", "rank": { "rank": 2, "win": 51, "draw": 2, "loss": 35, "wpct": 0.593,
+"gb": "2.0", "streak": "7승" } }, { "nameKo": "LG 트윈스", "rank": { "rank": 3,
+"win": 52, "draw": 0, "loss": 38, "wpct": 0.578, "gb": "3.0", "streak": "6패" }
+}, { "nameKo": "KIA 타이거즈", "rank": { "rank": 4, "win": 49, "draw": 2,
+"loss": 41, "wpct": 0.544, "gb": "6.0", "streak": "1패" } }, { "nameKo": "두산
+베어스", "rank": { "rank": 5, "win": 47, "draw": 3, "loss": 42, "wpct": 0.528,
+"gb": "7.5", "streak": "3승" } }, { "nameKo": "한화 이글스", "rank": { "rank":
+6, "win": 41, "draw": 3, "loss": 44, "wpct": 0.482, "gb": "11.5", "streak":
+"1승" } }, { "nameKo": "NC 다이노스", "rank": { "rank": 7, "win": 41, "draw": 1,
+"loss": 45, "wpct": 0.477, "gb": "12.0", "streak": "1승" } }, { "nameKo": "롯데
+자이언츠", "rank": { "rank": 8, "win": 40, "draw": 2, "loss": 48, "wpct": 0.455,
+"gb": "14.0", "streak": "1패" } }, { "nameKo": "SSG 랜더스", "rank": { "rank":
+9, "win": 33, "draw": 3, "loss": 56, "wpct": 0.371, "gb": "21.5", "streak":
+"1승" } }, { "nameKo": "키움 히어로즈", "rank": { "rank": 10, "win": 33, "draw":
+2, "loss": 58, "wpct": 0.363, "gb": "22.5", "streak": "1승" } } ]
