@@ -5,23 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KBO 야구 순위</title>
     <style>
-      table {
+      /* 표 구조 연습용: 태그마다 테두리 색이 다릅니다. */
+     /table {
         border-collapse: collapse;
         width: 100%;
+        border: 5px solid #7c3aed;
       }
-      th,
+      /thead {
+        outline: 4px solid #2563eb;
+        outline-offset: -4px;
+      }
+      /tbody {
+        outline: 4px solid #16a34a;
+        outline-offset: -4px;
+      }
+      tr {
+        outline: 2px dashed #f59e0b;
+        outline-offset: -2px;
+      }
+      th {
+        border: 3px solid #dc2626;
+        padding: 8px 12px;
+        text-align: center;
+        background-color: #f0f0f0;
+      }
       td {
-        border: 1px solid #ccc;
+        border: 2px solid #06b6d4;
         padding: 8px 12px;
         text-align: center;
       }
-      th {
-        background-color: #f0f0f0;
+      .tag-guide {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 14px;
       }
+      .tag-guide span {
+        padding: 5px 9px;
+        border: 3px solid;
+        border-radius: 5px;
+        font-family: monospace;
+        font-weight: bold;
+        background: white;
+      }
+      .table-guide { border-color: #7c3aed !important; }
+      .thead-guide { border-color: #2563eb !important; }
+      .tbody-guide { border-color: #16a34a !important; }
+      .tr-guide { border-color: #f59e0b !important; border-style: dashed !important; }
+      .th-guide { border-color: #dc2626 !important; }
+      .td-guide { border-color: #06b6d4 !important; }
     </style>
   </head>
   <body>
     <h1>KBO 야구 순위</h1>
+
+    <div class="tag-guide">
+      <span class="table-guide">&lt;table&gt;</span>
+      <span class="thead-guide">&lt;thead&gt;</span>
+      <span class="tbody-guide">&lt;tbody&gt;</span>
+      <span class="tr-guide">&lt;tr&gt;</span>
+      <span class="th-guide">&lt;th&gt;</span>
+      <span class="td-guide">&lt;td&gt;</span>
+    </div>
 
     <table>
       <thead>
@@ -42,8 +87,8 @@
 
     <script>
       fetch("baseball_ranking.json")
-        .then(function (pob) {
-          return pob.json();
+        .then(function (res) {
+          return res.json();
         })
         .then(function (data) {
           let rows = "";
