@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로또번호생성기</title>
+
+    <style>
+      #result {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      body {
+        text-align: center;
+      }
+      .ball {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: orange;
+        color: white;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .yellow {
+        background-color: #fbc400;
+      }
+
+      .blue {
+        background-color: #69c8f2;
+      }
+
+      .red {
+        background-color: #ff7272;
+      }
+
+      .gray {
+        background-color: #aaaaaa;
+      }
+
+      .green {
+        background-color: #b0d840;
+      }
+
+      #btn1 {
+        margin-top: 20px;
+        padding: 12px 25px;
+
+        border: none;
+        border-radius: 10px;
+
+        background-color: #4caf50;
+        color: white;
+
+        font-size: 16px;
+        font-weight: bold;
+
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      #btn1:hover {
+        background-color: #3d8b40;
+      }
+      #btn1:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>로또번호생성기</h1>
+    <h2>버튼을 클릭하면 1-45 사이의 숫자 6개가 생성됩니다.</h2>
+    <button id="btn1">버튼</button>
+    <div id="result"></div>
+
+    <script>
+      function setBallColor(ball, number) {
+        if (number <= 10) {
+          ball.classList.add("yellow");
+        } else if (number <= 20) {
+          ball.classList.add("blue");
+        } else if (number <= 30) {
+          ball.classList.add("red");
+        } else if (number <= 40) {
+          ball.classList.add("gray");
+        } else {
+          ball.classList.add("green");
+        }
+      }
+      const btn = document.getElementById("btn1");
+      btn.addEventListener("click", () => {
+        const numbers = [];
+        for (let i = 0; i < 7; i++) {
+          const num = Math.floor(Math.random() * 45) + 1;
+
+          if (!numbers.includes(num)) {
+            numbers.push(num);
+          } else {
+            i--;
+          }
+        }
+        const bonus = numbers.pop();
+        numbers.sort((a, b) => a - b);
+
+        const result = document.getElementById("result");
+        result.textContent = "";
+
+        for (const number of numbers) {
+          const ball = document.createElement("span");
+
+          ball.classList.add("ball");
+          ball.textContent = number;
+
+          setBallColor(ball, number);
+
+          result.appendChild(ball);
+        }
+        const plus = document.createElement("span");
+        plus.textContent = "+";
+        result.appendChild(plus);
+
+        const bonusBall = document.createElement("span");
+        bonusBall.classList.add("ball");
+        bonusBall.textContent = bonus;
+
+        setBallColor(bonusBall, bonus);
+
+        result.appendChild(bonusBall);
+      });
+    </script>
+  </body>
+</html>
